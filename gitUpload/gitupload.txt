@@ -1,0 +1,7 @@
+// command: git status// on root folder
+//if output is: not a git repository, then initialize git in folder
+//git init 
+//never upload node_modules on github
+//so create a file : .gitignore and add which file you want to ignore.
+//what is gitignore ?
+//gitignore is a plain text file where each line is contains a pattern for files/directories to ignore. 
