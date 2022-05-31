@@ -49,7 +49,7 @@ app.get("/weather", (req, res) => {
 //we can pass an object also.
 app.get("*", (req, res) => {
   res.render("404Error", {
-    errormsg:"Oops! page not found."
+    errormsg:"Oops! page not found. click here to homepage"
   });
 });
 

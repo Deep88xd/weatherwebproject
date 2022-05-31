@@ -1,7 +1,102 @@
+//step 1:
 // command: git status// on root folder
 //if output is: not a git repository, then initialize git in folder
+
+//step 2:
 //git init 
+
+//step 3:
 //never upload node_modules on github
-//so create a file : .gitignore and add which file you want to ignore.
+//so create a file : .gitignore and add which file you want to ignore.(such as node_modules) just write the name of files/directories.
 //what is gitignore ?
 //gitignore is a plain text file where each line is contains a pattern for files/directories to ignore. 
+
+//step 4:
+git add .
+
+//step 5:
+git commit -m "nodejs project first commit"
+
+//step 6:
+git config user.email "you@example.com"
+git config user.name "Your Name"
+git commit -m "nodejs project first commit"
+
+//step 7:
+command: git remote , to check remote is already added to the project or not.
+git remote maintains git version git is also a remote server.
+git remote add origin https://github.com/Deep88xd/weatherwebproject.git
+
+//step 8:
+without SSH we can Upload our project using push command but we need to Add SSH.
+create SSH key for secure file sharing.
+
+//step 9:
+on gitbash command:ls ~/.ssh  , to check remote is already exist in your computer.
+if(ssh is not exist){
+    command: ssh-keygen -t rsa -b 4096 -C "deepakoraon13454@gmail.com"
+//here rsa is the sirname of the author of ssh keygen
+//4096: is how much bit you want to give.
+//output:
+Enter file in which to save the key (/c/Users/deepa/.ssh/id_rsa):[press enter]
+//output:
+Created directory '/c/Users/deepa/.ssh'.
+}else{
+    if there two files exist such as:
+     ls ~/.ssh to check remote is already exist in your computer.
+     //output:
+id_rsa  id_rsa.pub
+here _rsa file is private file stay on your computer.
+And .pub file is public file upload to the remote computer.
+
+//step 10:
+add private file on computer.
+command: eval $(ssh-agent -s)
+//output
+Agent pid 1548
+add this key on computer
+command: ssh-add -k ~/.ssh/id_rsa
+//output
+Identity added: /c/Users/deepa/.ssh/id_rsa (deepakoraon13454@gmail.com)
+step 11:
+add .pub key on github or remoter computer.
+command: cat ~/.ssh/id_rsa.pub
+//output
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDB31ru/jjBTYF3wj8iQyCXkCfFstOFrKYOO2xstCBEqm55nKUTwokBCJ9J4PJuLzW6g2Sf6QZDqajTEHA06sicvXV24jhn3GgJz4PrRAKbg+1+hSBU8tRuPA94ok+WooHrVfmX4CX/HnzCdG/ez56v9dUaUFUqhQ3TPppo7OYn8b7+hkmATKsGbrToJ2CHU+eIcZOKYo95gT5JXQZKPzH3xJvYUeGRBlX9TT0j5MrudTkyDuh1NOV0m9Axxke/g/8mb1NbxmV3K8yXwHu3wHJzYcE4Pafdh4Outz3Zao3AHcyyRTi4dTz4ewGuSW74bo51emKjJ1yb+W+XJeZua57XSuydQ95I6rIT/1Klt//EQQ08rL+ATrCsTMfBd0cXzYGAbbqpZ/6vl0ltX9OCr2xW5pyX3GXWr88SQBxYzFXDRdUIzhSluNgPftnOAOCHwmEHhs2gjL1y9efXk67/T5g29kM8RHg19+p+S+tREB87+dKV6BPzCC/Ph0vPv+Dqu1waAun33dIW2FmzT5MoJ0qYoeVtgeF6Iy0oZGL2wu+TA/0/EfVeyGdhHLHluEADYUg0+HC24Uvby2+PqsHZ9Hhsa7z25SBoFEahZwxUpt1T4kDu2Kf9dVPNf9lKFsrKdWYVPDVHGnWMEMg/qAMZjkCgyXWLWXKC5gzc5OUQ46vpzw== deepakoraon13454@gmail.com
+
+//paste that code on github setting/ssh-gpg-keys section
+
+step 12:
+lets check secure connection is stablished or not , b/w local and remote computer or github
+on vs code terminal command: ssh -T git@github.com 
+//output
+//The authenticity of host 'github.com (13.234.210.38)' can't be established.
+ECDSA key fingerprint is SHA256:p2QAMXNIC1TJYWeIOttrVc98/R1BUFWu3/LiyKgUfQM.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? [press yes]
+//Hi Deep88xd! You've successfully authenticated, but GitHub does not provide shell access.
+}
+
+step 13:
+//check github repo branch
+command:git branch
+*master
+//push code to github
+command:git push -u origin main/master
+
+step 14:
+
+after push files to github if we want to update file to comupter and github both 
+//don't upload small changes to github evertime for a project.
+//dont do such things when necessary then only do commit.
+//check our project is modified or not ?
+command:git status
+//output
+modified:   gitUpload/gitupload.txt
+modified:   src/app.js
+
+//to add modified files to github
+command:git status
+command:git add .
+command:git status
+command:git commit -m "add files"
+command:git push
